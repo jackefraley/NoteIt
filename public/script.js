@@ -15,7 +15,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
     })
     .catch(error => console.error('Error:', error));
 });
-//test change
+//test changes
 
 
 function modifyDOM(response){
