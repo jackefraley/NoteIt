@@ -11,6 +11,9 @@
 **Data:** Login information, to-do’s, events, journal entries, other notes
 
 **Work Distribution:**
+
 Garrett Fratzke: HTML and help with JS if needed
+
 Zach Benedetti: CSS and help with JS if needed
+
 Jack Fraley: JS
