@@ -17,7 +17,7 @@ let currentDate =new Date();
 let formattedDate = `${currentDate.getMonth() +1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 //let dayofTheWeek = `${currentDate.getDay()}`
 
-app.post('/ask-history', async (req, res) => {
+app.post('/calendar', async (req, res) => {
     const userInput = req.body.text;
     // Process with GPT
     const gptResponse = await openai.chat.completions.create({
