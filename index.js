@@ -53,7 +53,7 @@ app.post('/ask-history', async (req, res) => {
     var eventName = matches[2];
     var eventDate = matches[3];
     var eventTime = matches[4]
-    console.log(matches[1]);
+    console.log(matches[2]);
 
     //console.log(content)
 
