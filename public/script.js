@@ -1,5 +1,8 @@
-document.getElementById('submitButton').addEventListener('click', function() {
-    const question = document.getElementById('question').value;
+document.addEventListener('keypress', function(event) {
+    if(event.key === "Enter"){
+    const question = document.getElementById('calendarInput').value;
+    document.getElementById('calendarInput').value = ""
+
 
     fetch('http://localhost:3000/calendar', {
         method: 'POST',
@@ -14,6 +17,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
        modifyDOM(data);
     })
     .catch(error => console.error('Error:', error));
+}
 });
 //test changes
 
