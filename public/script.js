@@ -1,7 +1,7 @@
 document.getElementById('submitButton').addEventListener('click', function() {
     const question = document.getElementById('question').value;
 
-    fetch('http://localhost:3000/ask-history', {
+    fetch('http://localhost:3000/calendar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
