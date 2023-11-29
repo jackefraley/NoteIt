@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>NoteIt</title>
+        <style>
+            .calendar {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+            }
+    
+            .day {
+                border: 1px solid black;
+                padding: 10px;
+                text-align: center;
+            }
+    
+            input {
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <h1>My Calendar</h1>
+    
+        <input type="text" placeholder="Add Event">
+    
+        <div class="calendar">
+            <!-- Days of the week will go here -->
+            <div class="day">Sun</div>
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thu</div>
+            <div class="day">Fri</div>
+            <div class="day">Sat</div>
+    
+            <!-- Repeat for each day in the month -->
+            <div class="day"></div>
+            <div class="day"></div>
+            <!-- ... -->
+        </div>
+
+        <div class="January">
+            <div class="January1">January1</div>
+            <div class="January2">January2</div>
+            <div class="January3">January3</div>
+            <div class="January4">January4</div>
+            <div class="January5">January5</div>
+            <div class="January6">January6</div>
+            <div class="January7">January7</div>
+            <div class="January8">January8</div>
+            <div class="January9">January9</div>
+            <div class="January10">January10</div>
+            <div class="January11">January11</div>
+            <div class="January12">January12</div>
+            <div class="January13">January13</div>
+            <div class="January14">January14</div>
+            <div class="January15">January15</div>
+            <div class="January16">January16</div>
+            <div class="January17">January17</div>
+            <div class="January18">January18</div>
+            <div class="January19">January19</div>
+            <div class="January20">January20</div>
+            <div class="January21">January21</div>
+            <div class="January22">January22</div>
+            <div class="January23">January23</div>
+            <div class="January24">January24</div>
+            <div class="January25">January25</div>
+            <div class="January26">January26</div>
+            <div class="January27">January27</div>
+            <div class="January28">January28</div>
+            <div class="January29">January29</div>
+            <div class="January30">January30</div>
+            <div class="January31">January31</div>
+        </div>
+
+        <div class="Feburary">
+            <div class="Feburary1">Feburary1</div>
+            <div class="Feburary2">Feburary2</div>
+            <div class="Feburary3">Feburary3</div>
+            <div class="Feburary4">Feburary4</div>
+            <div class="Feburary5">Feburary5</div>
+            <div class="Feburary6">Feburary6</div>
+            <div class="Feburary7">Feburary7</div>
+            <div class="Feburary8">Feburary8</div>
+            <div class="Feburary9">Feburary9</div>
+            <div class="Feburary10">Feburary10</div>
+            <div class="Feburary11">Feburary11</div>
+            <div class="Feburary12">Feburary12</div>
+            <div class="Feburary13">Feburary13</div>
+            <div class="Feburary14">Feburary14</div>
+            <div class="Feburary15">Feburary15</div>
+            <div class="Feburary16">Feburary16</div>
+            <div class="Feburary17">Feburary17</div>
+            <div class="Feburary18">Feburary18</div>
+            <div class="Feburary19">Feburary19</div>
+            <div class="Feburary20">Feburary20</div>
+            <div class="Feburary21">Feburary21</div>
+            <div class="Feburary22">Feburary22</div>
+            <div class="Feburary23">Feburary23</div>
+            <div class="Feburary24">Feburary24</div>
+            <div class="Feburary25">Feburary25</div>
+            <div class="Feburary26">Feburary26</div>
+            <div class="Feburary27">Feburary27</div>
+            <div class="Feburary28">Feburary28</div>
+            <div class="Feburary29">Feburary29</div>
+            <div class="Feburary30">Feburary30</div>
+            <div class="Feburary31">Feburary31</div>
+        </div>
+
+        <div class="March">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="April">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="May">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="June">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="July">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="August">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="September">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="October">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="November">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+
+        <div class="December">
+            <div class="1">1</div>
+            <div class="2">2</div>
+            <div class="3">3</div>
+            <div class="4">4</div>
+            <div class="5">5</div>
+            <div class="6">6</div>
+            <div class="7">7</div>
+            <div class="8">8</div>
+            <div class="9">9</div>
+            <div class="10">10</div>
+            <div class="11">11</div>
+            <div class="12">12</div>
+            <div class="13">13</div>
+            <div class="14">14</div>
+            <div class="15">15</div>
+            <div class="16">16</div>
+            <div class="17">17</div>
+            <div class="18">18</div>
+            <div class="19">19</div>
+            <div class="20">20</div>
+            <div class="21">21</div>
+            <div class="22">22</div>
+            <div class="23">23</div>
+            <div class="24">24</div>
+            <div class="25">25</div>
+            <div class="26">26</div>
+            <div class="27">27</div>
+            <div class="28">28</div>
+            <div class="29">29</div>
+            <div class="30">30</div>
+            <div class="31">31</div>
+        </div>
+    </body>
+    
+</html>
