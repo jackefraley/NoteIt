@@ -1,5 +1,6 @@
+window.onload = createCalendar
 document.addEventListener('keypress', function(event) {
-    if(event.key === "Enter"){
+    if(event.key === "Enter" && document.getElementById('calendarInput').value != ''){
     const question = document.getElementById('calendarInput').value;
     document.getElementById('calendarInput').value = ""
 
@@ -18,11 +19,14 @@ document.addEventListener('keypress', function(event) {
     })
     .catch(error => console.error('Error:', error));
 }
+else{
+    alert('Text box cant be empty!')    
+}
 });
 //test changes
 
 
-function modifyDOM(response){
+/*function modifyDOM(response){
     //const responseContainer = document.getElementById('response');
     //console.log(response)
 
@@ -34,10 +38,21 @@ function modifyDOM(response){
         console.log('error')
     }
 }
+*/
+
+function createCalendar(){
+    for(let i = 2; i <= 31; i++){
+        var main = document.getElementById('calendarDays')
+        var dayTemplate = document.querySelector('.dayofMonth')
+        var newDay = dayTemplate.cloneNode(true)
+        newDay.querySelector('.day-number').textContent = i
+        main.appendChild(newDay)
+    }
+}
 
 
 
-function addElement() {
+/*function addElement() {
     console.log('added');
 
     // Create a new input element
@@ -55,4 +70,4 @@ function removeElement(){
     if(container.lastChild){
     container.removeChild(container.lastChild)
     }
-}
+}*/

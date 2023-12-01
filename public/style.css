@@ -1,0 +1,33 @@
+.calendarDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+.monthDays{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    gap: 10px;
+}
+
+.day {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.dayofMonth{
+    display: inline-block;
+    vertical-align: top;
+    height: 100px;
+    width: 180px;
+    padding: 10px;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+}

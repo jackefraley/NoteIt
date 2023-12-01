@@ -16,7 +16,7 @@ app.use(express.static('public'));
 app.use(express.json())
 
 //get todays date
-let currentDate =new Date();
+let currentDate = new Date();
 let formattedDate = `${currentDate.getMonth() +1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
 //post request to server
@@ -33,7 +33,8 @@ app.post('/calendar', async (req, res) => {
             eventAction: ()
             eventName: ()
             eventDate: ()
-            eventTime: ()`
+            eventTime: ()
+            User Input: ${userInput}`
         }],
         //gpt response variables
         //max_tokens changes complexity of response, higher costs more money
@@ -52,7 +53,7 @@ app.post('/calendar', async (req, res) => {
     const chatMessage  = gptResponse.choices[0].message.content;
     //output the gpt response
     //pull the specific data from the response
-    //console.log(chatMessage)
+    console.log(chatMessage)
     var regExp = /\(([^)]+)\)/;
     var matches = regExp.exec(chatMessage);
     var eventAction = matches[1];
@@ -78,7 +79,8 @@ res.json({content: eventAction, content: eventDate, content: eventTime, content:
 
 //information needed to run the server
 const port = process.env.PORT || 3000;
-const server = app.listen(port, () => console.log(`Server listening on port ${port}`));
+const server = app.listen(port, () => {console.log(`Server listening on port ${port}`)});
+
 process.on('SIGINT', () => {
     console.log('Process terminated. Shutting down server...');
     server.close(() => {
