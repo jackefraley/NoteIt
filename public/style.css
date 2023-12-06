@@ -22,11 +22,16 @@ input {
     margin-bottom: 10px;
 }
 
+h1 {
+  text-align: center;
+  background-color: limegreen;
+}
+
 .dayofMonth{
     display: inline-block;
     vertical-align: top;
     height: 100px;
-    width: 180px;
+    width: 12.5%;
     padding: 10px;
     border: 1px solid #dadada;
     border-radius: 3px;
