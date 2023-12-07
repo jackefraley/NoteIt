@@ -23,51 +23,54 @@ else{
     alert('Text box cant be empty!')    
 }
 });
-//test changes
 
-
-/*function modifyDOM(response){
-    //const responseContainer = document.getElementById('response');
-    //console.log(response)
-
-    if (response.action === 'add') {
-        addElement()
-    } else if (response.action === 'remove') {
-        removeElement()
-    } else if(response.action === 'unknown') {
-        console.log('error')
-    }
-}
-*/
+let date = new Date()
+let year = date.getFullYear()
+let month = date.getMonth()
 
 function createCalendar(){
-    for(let i = 2; i <= 31; i++){
-        var main = document.getElementById('calendarDays')
-        var dayTemplate = document.querySelector('.dayofMonth')
-        var newDay = dayTemplate.cloneNode(true)
-        newDay.querySelector('.day-number').textContent = i
+
+    let firstDay = new Date(year, month, 1).getDay()
+    let lastDate = new Date(year, month + 1, 0).getDate()
+    let lastMonthLastDate = new Date(year, month, 0).getDate()
+    var main = document.getElementById('calendarDays')
+    var dayTemplate = document.querySelector('.dayofMonth')
+
+    main.innerHTML = ''
+
+    for(let i = 0; i < firstDay; i++){
+        let newDay = dayTemplate.cloneNode(true)
+        newDay.querySelector('.content p').textContent = lastMonthLastDate - firstDay + 1 + i
+        main.appendChild(newDay)
+    }
+
+    for (let i = 1; i <= lastDate; i++) {
+        let newDay = dayTemplate.cloneNode(true)
+        newDay.querySelector('.content p').textContent = i
         main.appendChild(newDay)
     }
 }
 
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+]
 
-
-/*function addElement() {
-    console.log('added');
-
-    // Create a new input element
-    var newElement = document.createElement('input');
-    newElement.type = 'text';
-    newElement.placeholder = 'Second Input';
-
-    // Append the new element to the container
-    var container = document.getElementById('additionalInputs');
-    container.appendChild(newElement);
+function generateCalendar(){
+    let firstDay = new Date(year, month, 1).getDay()
+    let lastDate = new Date(year, month + 1, 0).getDate()
+    let lastDay = new Date(year, month, lastDate).getDay()
+    let monthLastDate = new Date(year, month, 0).getDate()
 }
-function removeElement(){
-    var container = document.getElementById('additionalInputs')
-    console.log('remove ran')
-    if(container.lastChild){
-    container.removeChild(container.lastChild)
-    }
-}*/
+
+

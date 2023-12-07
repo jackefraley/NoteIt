@@ -12,6 +12,21 @@
     
         <input type="text" id="calendarInput" placeholder="Add Event">
 
+        <select name="month" id="monthSelect">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+
         <div class="calendarDays">
             <div class="day">Sun</div>
             <div class="day">Mon</div>
@@ -27,7 +42,7 @@
                 <div class="dayofMonth">
                     <div class= 'contentContainer'>
                         <div class= 'content'>
-                            <a class="day-number">1</a>
+                            <p id="day-number"></p>
                         </div>
                     </div>
                 </div>
