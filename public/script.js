@@ -19,9 +19,6 @@ document.addEventListener('keypress', function(event) {
     })
     .catch(error => console.error('Error:', error));
 }
-else{
-    alert('Text box cant be empty!')    
-}
 });
 //test changes
 

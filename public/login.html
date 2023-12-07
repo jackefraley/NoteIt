@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Calendar App Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>NoteIt Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="login()">Login</button>
+        </form>
+
+        <p class="register-link">Don't have an account? <a href="#" onclick="showRegistrationForm()">Register here</a></p>
+
+        <form id="registerForm" style="display: none;">
+            <h2>Create an Account</h2>
+            <label for="newUsername">New Username:</label>
+            <input type="text" id="newUsername" name="newUsername" required>
+
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <button type="button" onclick="register()">Register</button>
+            <p class="back-link">Already have an account? <a href="#" onclick="showLoginForm()">Back to Login</a></p>
+        </form>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>

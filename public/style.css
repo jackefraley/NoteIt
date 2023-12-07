@@ -1,18 +1,16 @@
-.calendarDays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-}
-.monthDays{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 1fr);
-    gap: 10px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-.day {
-    border: 1px solid black;
-    padding: 10px;
+h1 {
     text-align: center;
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    margin: 0;
 }
 
 input {
@@ -22,17 +20,31 @@ input {
     margin-bottom: 10px;
 }
 
-h1 {
-  text-align: center;
-  background-color: limegreen;
+.calendarDays {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    background-color: #2c3e50;
+    color: #ecf0f1;
 }
 
-.dayofMonth{
-    display: inline-block;
-    vertical-align: top;
-    height: 100px;
-    width: 12.5%;
+.day {
+    flex: 1;
     padding: 10px;
-    border: 1px solid #dadada;
-    border-radius: 3px;
+    text-align: center;
+    background-color: #34495e;
+    box-sizing: border-box;
+}
+
+#calendarDays {
+    display:flex;
+}
+
+.dayofMonth {
+  border: 1px solid black;
+  width: 100%;
+}
+.contentContainer {
+  display: flex;
+  width: 14.5%;
 }
