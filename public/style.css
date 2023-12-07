@@ -5,6 +5,12 @@ body {
     background-color: #f4f4f4;
 }
 
+#calendarDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
 h1 {
     text-align: center;
     background-color: #3498db;
@@ -56,9 +62,6 @@ input {
     box-sizing: border-box;
 }
 
-#calendarDays {
-    display:flex;
-}
 
 .dayofMonth {
   border: 1px solid black;

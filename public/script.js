@@ -21,9 +21,35 @@ document.addEventListener('keypress', function(event) {
 }
 });
 
+
+document.getElementById('rightClick').addEventListener('click', calendarStep)
+document.getElementById('leftClick').addEventListener('click', calendarStep)
+
+
 let date = new Date()
-let year = date.getFullYear()
 let month = date.getMonth()
+
+const monthNameVaraible = date.toLocaleString('default', { month: 'long' })
+document.getElementById('monthName').textContent = monthNameVaraible
+
+
+function calendarStep(event){
+
+    if(event.target.id === 'rightClick'){
+        month++
+    }
+    else if(event.target.id === 'leftClick'){
+        month--
+    }
+    createCalendar()
+    let tempDate = new Date();
+    tempDate.setMonth(month);
+    const monthNameVaraible = tempDate.toLocaleString('default', { month: 'long' })
+    console.log(monthNameVaraible)
+    document.getElementById('monthName').textContent = monthNameVaraible
+}
+
+let year = date.getFullYear()
 
 function createCalendar(){
 
@@ -70,13 +96,6 @@ const months = [
     "November",
     "December"
 ]
-
-function generateCalendar(){
-    let firstDay = new Date(year, month, 1).getDay()
-    let lastDate = new Date(year, month + 1, 0).getDate()
-    let lastDay = new Date(year, month, lastDate).getDay()
-    let monthLastDate = new Date(year, month, 0).getDate()
-}
 
 
 
