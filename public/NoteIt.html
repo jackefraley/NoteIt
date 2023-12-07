@@ -1,48 +1,35 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <title>NoteIt</title>
 
-        <link rel="stylesheet" href="style.css" type="text/css"/>
-    </head>
-    <body>
-    
-        <h1>My Calendar</h1>
-    
-        <input type="text" id="calendarInput" placeholder="Add Event">
+<head>
+    <title>NoteIt</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
 
-        <select name="month" id="monthSelect">
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-        </select>
+<body>
+    <div class="navbar">
+        <h1>NoteIt: My Calendar</h1>
+        <a href="login.html" class="login-link">Login</a>
+    </div>
 
-        <div class="calendarDays">
-            <div class="day">Sun</div>
-            <div class="day">Mon</div>
-            <div class="day">Tue</div>
-            <div class="day">Wed</div>
-            <div class="day">Thu</div>
-            <div class="day">Fri</div>
-            <div class="day">Sat</div>
-        </div>
+    <input type="text" id="calendarInput" placeholder="Add Event">
+
+    <div class="calendarDays">
+        <div class="day">Sun</div>
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+        <div class="day">Sat</div>
+    </div>
 
         <div class = "monthDays">
             <section id = calendarDays>
                 <div class="dayofMonth">
                     <div class= 'contentContainer'>
                         <div class= 'content'>
-                            <p id="day-number"></p>
+                            <a class="day-number">1</a>
                         </div>
                     </div>
                 </div>

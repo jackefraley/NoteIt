@@ -19,9 +19,6 @@ document.addEventListener('keypress', function(event) {
     })
     .catch(error => console.error('Error:', error));
 }
-else{
-    alert('Text box cant be empty!')    
-}
 });
 
 let date = new Date()
@@ -72,5 +69,6 @@ function generateCalendar(){
     let lastDay = new Date(year, month, lastDate).getDay()
     let monthLastDate = new Date(year, month, 0).getDate()
 }
+
 
 
