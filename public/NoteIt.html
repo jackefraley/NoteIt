@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <title>NoteIt</title>
 
-        <link rel="stylesheet" href="style.css" type="text/css"/>
-    </head>
-    <body>
+<head>
+    <title>NoteIt</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
 
+<body>
+    <div class="navbar">
         <h1>NoteIt: My Calendar</h1>
+        <a href="login.html" class="login-link">Login</a>
+    </div>
 
-        <input type="text" id="calendarInput" placeholder="Add Event">
+    <input type="text" id="calendarInput" placeholder="Add Event">
 
-        <div class="calendarDays">
-            <div class="day">Sun</div>
-            <div class="day">Mon</div>
-            <div class="day">Tue</div>
-            <div class="day">Wed</div>
-            <div class="day">Thu</div>
-            <div class="day">Fri</div>
-            <div class="day">Sat</div>
-        </div>
+    <div class="calendarDays">
+        <div class="day">Sun</div>
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+        <div class="day">Sat</div>
+    </div>
 
-        <div class = "monthDays">
-            <section id = calendarDays>
-                <div class="dayofMonth">
-                    <div class= 'contentContainer'>
-                        <div class= 'content'>
-                            <a class="day-number">1</a>
-                        </div>
+    <div class="monthDays">
+        <section id=calendarDays>
+            <div class="dayofMonth">
+                <div class='contentContainer'>
+                    <div class='content'>
+                        <a class="day-number">1</a>
                     </div>
                 </div>
-            </section>
-        </div>
-        <script src="script.js"></script>
-    </body>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
 
 </html>
