@@ -46,6 +46,14 @@ function createCalendar(){
         newDay.querySelector('.content p').textContent = i
         main.appendChild(newDay)
     }
+    let remainingDays = 7 - main.children.length % 7;
+    if (remainingDays < 7) {
+    for (let i = 1; i <= remainingDays; i++) {
+        let newDay = dayTemplate.cloneNode(true)
+        newDay.querySelector('.content p').textContent = i;
+        main.appendChild(newDay)
+    }
+}
 }
 
 const months = [
