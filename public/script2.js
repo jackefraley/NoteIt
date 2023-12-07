@@ -1,29 +1,37 @@
-function login() {
-    var enteredUsername = document.getElementById('username').value;
-    var enteredPassword = document.getElementById('password').value;
+// Check if user data is already stored in local storage
+   var users = JSON.parse(localStorage.getItem('users')) || [];
 
-    // Check credentials (replace with your authentication logic)
-    if (enteredUsername === 'user' && enteredPassword === 'password') {
-        alert('Login successful!');
-    } else {
-        alert('Invalid username or password');
-    }
-}
+   function login() {
+       var enteredUsername = document.getElementById('username').value;
+       var enteredPassword = document.getElementById('password').value;
 
-function showRegistrationForm() {
-    document.getElementById('loginForm').style.display = 'none';
-    document.getElementById('registerForm').style.display = 'block';
-}
+       // Check credentials
+       var user = users.find(u => u.username === enteredUsername && u.password === enteredPassword);
 
-function register() {
-    var newUsername = document.getElementById('newUsername').value;
-    var newPassword = document.getElementById('newPassword').value;
+       if (user) {
+           alert('Login successful!');
+       } else {
+           alert('Invalid username or password');
+       }
+   }
 
-    // Store the new user credentials (replace with your storage logic)
-    alert('Account created successfully!');
-}
+   function showRegistrationForm() {
+       document.getElementById('loginForm').style.display = 'none';
+       document.getElementById('registerForm').style.display = 'block';
+   }
 
-function showLoginForm() {
-    document.getElementById('loginForm').style.display = 'flex';
-    document.getElementById('registerForm').style.display = 'none';
-}
+   function register() {
+       var newUsername = document.getElementById('newUsername').value;
+       var newPassword = document.getElementById('newPassword').value;
+
+       // Store the new user credentials
+       users.push({ username: newUsername, password: newPassword });
+       localStorage.setItem('users', JSON.stringify(users));
+
+       alert('Account created successfully!');
+   }
+
+   function showLoginForm() {
+       document.getElementById('loginForm').style.display = 'flex';
+       document.getElementById('registerForm').style.display = 'none';
+   }
