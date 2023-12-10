@@ -14,8 +14,27 @@ document.addEventListener('keypress', function(event) {
     })
     .then(response => response.json())
     .then(data => {
-       console.log()
-       modifyDOM(data);
+        var action = data.action
+        var time = data.time
+        var month = data.month
+        var day = data.day
+        var year = data.year
+        var name = data.name
+        var numOfEvents = data.numOfEvents
+        console.log(numOfEvents)
+        console.log('name', day)
+        let regExp = /\d+/g;
+        let regExpText = /[^,]+/g;
+        var matchesDay = day.match(regExp);
+        var matchesMonth = month.match(regExp);
+        var matchesYear = year.match(regExp);
+        var matchesTime = time.match(regExpText);
+        console.log(time)
+        console.log("length:", matchesDay.length)
+        for(i = 0; i < matchesDay.length; i++){
+            console.log(matchesTime.length)
+            modifyCalendar(action, matchesMonth[i], matchesDay[i], matchesYear[i], matchesTime[i], name)
+        }
     })
     .catch(error => console.error('Error:', error));
 }
@@ -35,10 +54,17 @@ document.getElementById('monthName').textContent = monthNameVaraible
 
 function calendarStep(event){
 
-    if(event.target.id === 'rightClick'){
+    if(event.target.id === 'rightClick'|| event === 'rightClick'){
+        console.log(month%12 + 1)
+        if((month%12 + 1) == 12){
+            year++
+        }
         month++
     }
     else if(event.target.id === 'leftClick'){
+        if((month%12 + 1) == 1){
+            year--
+        }
         month--
     }
     createCalendar()
@@ -57,6 +83,8 @@ function createCalendar(){
     let lastDate = new Date(year, month + 1, 0).getDate()
     let lastMonthLastDate = new Date(year, month, 0).getDate()
     var main = document.getElementById('calendarDays')
+    document.getElementById('month-number').innerHTML = month%12 + 1
+    document.getElementById('year-number').innerHTML = year
     var dayTemplate = document.querySelector('.dayofMonth')
 
     main.innerHTML = ''
@@ -82,20 +110,30 @@ function createCalendar(){
 }
 }
 
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-]
+function modifyCalendar(action, month, day, year, time, name){
+    console.log(time)
+    let dayCheck = document.getElementsByClassName('day-number')
+    if(action === "add"){
+        for(j = 0; j < dayCheck.length; j++){
+            if(dayCheck[j].textContent === day){
+                document.getElementsByClassName('eventContent')[j].innerHTML = name + " - " + time
+                return;
+            }
+        }
+    }
+    else if(action === "change"){
 
-
-
+    }
+    else if(action === "delete"){
+        for(j = 0; j < dayCheck.length; j++){
+            if(dayCheck[j].textContent === day){
+                document.getElementsByClassName('eventContent')[i].innerHTML = ''
+                return
+            }
+        }
+    }
+    else{
+        console.log('error')
+        return
+    }
+}

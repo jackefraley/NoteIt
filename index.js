@@ -3,6 +3,8 @@ const express = require("express")
 const cors = require('cors');
 require("dotenv").config()
 const OpenAI = require('openai').default;
+const moment = require('moment');
+let today = moment();
 
 //get openai key from .env file
 //leave .env in .gitignore, DO NOT PUSH TO GITHUB
@@ -18,6 +20,12 @@ app.use(express.json())
 //get todays date
 let currentDate = new Date();
 let formattedDate = `${currentDate.getMonth() +1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+let dayOfMonth = currentDate.getDate()
+let dayOfWeek = currentDate.getDay()
+let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let monthNames = currentDate.toLocaleString('default', { month: 'long' })
+let thisYear = currentDate.getFullYear()
+console.log(dayNames[dayOfWeek])
 
 //post request to server
 app.post('/calendar', async (req, res) => {
@@ -27,14 +35,17 @@ app.post('/calendar', async (req, res) => {
         model: "gpt-4",
         messages: [{
             role: "assistant",
-            content: `Extract the event details from the user's input. Begin by identifying the action the user wants to perform from the list: "add, delete, change", then get the events name. Then, determine the event's date based on today's date which is ${formattedDate}, formatted as "month/day/year". If the user wants this event to be repeated, add the additional dates underneath the eventDate. If no event time is specified, default to "All Day". Finally present the information as follows with the value of each item inside parentheses:
+            content: `Extract the event details from the user's input. Begin by identifying the action the user wants to perform from the list: "add, delete, change", then get the events name. Then, determine the event's date based on today's date which is ${dayNames[dayOfWeek]}, the ${dayOfMonth} of ${monthNames}, ${thisYear} and display it in the format month/day/year. If the user wants this event to be repeated, add the additional date directly after each variable including eventTime, eventDay, eventMonth, and eventYear outputted as a comma separated list, and tell me the number of events there are. If no event time is specified, default to "All Day". Finally present the information as follows with the value of each item inside parentheses:
 
-            Desired Format:
             eventAction: ()
             eventName: ()
-            eventDate: ()
+            eventMonth: ()
+            eventDay: ()
+            eventYear: ()
             eventTime: ()
-            User Input: ${userInput}`
+            numberOfEvents: ()
+            User Input: ${userInput}
+            DO NOT OUTPUT ANYTHING BUT THE FORMAT GIVEN`
         }],
         //gpt response variables
         //max_tokens changes complexity of response, higher costs more money
@@ -46,35 +57,29 @@ app.post('/calendar', async (req, res) => {
         presence_penalty: 0.0,
     }); 
     
-
-    //console.log(formattedDate)
-    
-    
     const chatMessage  = gptResponse.choices[0].message.content;
     //output the gpt response
     //pull the specific data from the response
     console.log(chatMessage)
-    var regExp = /\(([^)]+)\)/;
+    var regExp = /eventAction: \(([^)]+)\)\neventName: \(([^)]+)\)\neventMonth: \(([^)]+)\)\neventDay: \(([^)]+)\)\neventYear: \(([^)]+)\)\neventTime: \(([^)]+)\)\nnumberOfEvents: \(([^)]+)\)/;
     var matches = regExp.exec(chatMessage);
     var eventAction = matches[1];
     var eventName = matches[2];
-    var eventDate = matches[3];
-    var eventTime = matches[4]
+    var eventMonth = matches[3];
+    var eventDay = matches[4];
+    var eventYear = matches[5];
+    var eventTime = matches[6];
+    var numberOfEvents = matches[7];
 
-    //console.log(content)
-
-    /*let action;
-    if(content.includes('add')){
-        action = 'add';
-    } else if(content.includes('remove')){
-        action = 'remove'
-    } else{
-        action = 'unknown'
-    }*/
-
-   // res.json({ action: action, content: content });
-//pass the response back to the server
-res.json({content: eventAction, content: eventDate, content: eventTime, content: eventName})
+res.json({
+    action: eventAction, 
+    month: eventMonth, 
+    day: eventDay,
+    year: eventYear,
+    time: eventTime, 
+    name: eventName,
+    numOfEvents: numberOfEvents
+})
 });
 
 //information needed to run the server
@@ -88,4 +93,3 @@ process.on('SIGINT', () => {
         process.exit(0);
     });
 });
-
