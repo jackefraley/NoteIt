@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: rgb(251,204,220);
+    background: radial-gradient(circle, rgba(251,204,220,1) 0%, rgba(181,200,255,1) 100%);
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,22 +10,25 @@ body {
     height: 100vh;
 }
 .navbar {
-    background-color: #333;
     color: white;
     padding: 15px;
     text-align: right;
 }
 
 .home-link {
-    color: white;
+    color: black;
     text-decoration: none;
-    padding: 10px;
-    border: 1px solid white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid;
     border-radius: 5px;
 }
 
 .home-link:hover {
-    background-color: #555;
+    background-color: rgba(101, 101, 101, 0.274);
 }
 
 
@@ -51,7 +55,7 @@ input {
 }
 
 button {
-    background-color: #4caf50;
+    background-color: rgb(64, 153, 237);
     color: #fff;
     padding: 10px 20px;
     margin: 0px 0px 10px;

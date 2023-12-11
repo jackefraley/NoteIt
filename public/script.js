@@ -50,6 +50,7 @@ document.addEventListener('keypress', function(event) {
 
 document.getElementById('rightClick').addEventListener('click', calendarStep)
 document.getElementById('leftClick').addEventListener('click', calendarStep)
+
 let date = new Date()
 let month = date.getMonth()
 let year = date.getFullYear()

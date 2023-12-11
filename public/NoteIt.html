@@ -5,20 +5,24 @@
         <title>NoteIt</title>
 
         <link rel="stylesheet" href="style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     </head>
     <body>
 
-        <h1>My Calendar</h1>
         <div class="navbar">
-            <a href="login.html" class="home-link">NoteIt</a>
+            <a href="login.html" class="home-link">NoteIt!</a>
         </div>
 
-        <input type="text" id="calendarInput" placeholder="Add Event">
+        <input type="text" id="calendarInput" placeholder="Try saying: Plan a new years eve party for 7pm!">
 
-        <button id="leftClick">L</button>
-        <button id="rightClick">R</button>
-
-        <div id="monthName"></div>
+ <div class="calendar-header">
+    <div id="monthName"></div>
+    <div class="button-container">
+        <div id="leftClick" class="arrow"><i class="fa fa-arrow-left"></i></div>
+        <div id="rightClick" class="arrow"><i class="fa fa-arrow-right"></i></div>
+    </div>
+</div>
+        
 
         <div class="calendarDays">
             <div class="day">Sun</div>

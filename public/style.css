@@ -1,52 +1,108 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background: rgb(251,204,220);
+    background: radial-gradient(circle, rgba(251,204,220,1) 0%, rgba(181,200,255,1) 100%);
 }
 
 #calendarDays {
     display: grid;
+    border-radius: 10px;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
+    margin-bottom: 5px;
 }
 
 h1 {
-    text-align: center;
-    background-color: #3498db;
-    color: #fff;
-    padding: 20px;
-    margin: 0;
+    text-align: left;
+    padding-top: 10px;
+    color: black;
 }
 
 input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    margin-top: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 10px;;
+    background-color: rgba(255, 255, 255, 0.274);
+}
+input::placeholder{
+    color: rgb(104, 104, 104);
 }
 
 .calendarDays {
     display: flex;
     gap: 5px;
     width: 100%;
-    background-color: #2c3e50;
     color: #ecf0f1;
 }
 .navbar {
-    background-color: #3498db;
     color: white;
     padding: 15px;
-    text-align: right;
+    
 }
 .home-link {
-    color: white;
+    color: black;
     text-decoration: none;
-    padding: 10px;
-    border: 1px solid white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid;
     border-radius: 5px;
 }
+.home-link:hover{
+    background-color: rgba(101, 101, 101, 0.274);
+}
 
+.calendar-header {
+    position: relative; /* Set relative positioning for the header */
+    width: 100%; /* Full width of container */
+    height: 50px;
+}
+
+#monthName {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    margin-left: 5px;
+    gap: 10px;
+}
+
+.arrow {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s, transform 0.1s;
+}
+.arrow i { /* Style for Font Awesome icons */
+    font-size: 20px; /* Adjust size as needed */
+    pointer-events: none;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.arrow:active {
+    transform: scale(0.95);
+}
 .login-link {
     color: white;
     text-decoration: none;
@@ -65,7 +121,7 @@ input {
     flex: 1;
     padding: 10px;
     text-align: center;
-    background-color: #34495e;
+    color: black;
     box-sizing: border-box;
 }
 
@@ -77,10 +133,13 @@ input {
   border: 1px solid black;
   width: 100%;
   height: 100px;
+  border-radius: 5px;
 }
 .contentContainer {
   display: flex;
-  width: 200px;
+  width: 190px;
+  padding: 5px;
+
 }
 .content{
     width: 200px
