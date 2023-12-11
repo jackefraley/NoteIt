@@ -26,7 +26,6 @@ document.addEventListener('keypress', function(event) {
         var day = data.day;
         var year = data.year;
         var name = data.name;
-        console.log('name', action);
         let regExp = /\d+/g;
         let regExpText = /(delete|add)/g;
         let regExpTime = /[^,]+/g;
@@ -36,10 +35,8 @@ document.addEventListener('keypress', function(event) {
         var matchesYear = year.match(regExp);
         var matchesTime = time.match(regExpTime);
         var matchesName = name.match(regExpTime);
-        console.log("length:", matchesDay.length);
         for(let i = 0; i < matchesDay.length; i++){
-            console.log(matchesAction.length);
-            console.log(matchesAction[i]);
+
             modifyCalendar(matchesAction[i], matchesMonth[i], matchesDay[i], matchesYear[i], matchesTime[i], matchesName[i]);
         }
     })
@@ -66,9 +63,7 @@ function updateMonthName(month){
 
 
 function calendarStep(event){
-
-    if(event.target.id === 'rightClick'|| event === 'rightClick'){
-        console.log(month%12 + 1)
+    if(event.target.id === 'rightClick'){
         if((month%12 + 1) == 12){
             year++
         }
@@ -84,7 +79,6 @@ function calendarStep(event){
 }
 
 function createCalendar(){
-    console.log(month)
     updateMonthName(month)
     let firstDay = new Date(year, month, 1).getDay()
     let lastDate = new Date(year, month + 1, 0).getDate()
@@ -93,7 +87,6 @@ function createCalendar(){
     document.getElementById('month-number').innerHTML = month%12 + 1
     document.getElementById('year-number').innerHTML = year
     var dayTemplate = document.querySelector('.dayofMonth')
-
     main.innerHTML = ''
 
     for(let i = 0; i < firstDay; i++){
@@ -117,16 +110,15 @@ function createCalendar(){
 }
 }
 
-function modifyCalendar(action, currentMonth, day, currentYear, time, name){
-    month = currentMonth
-    year = currentYear
-    console.log(month)
+function modifyCalendar(action, eventMonth, day, eventYear, time, name){
+    month = eventMonth - 1
+    year = eventYear
     createCalendar()
     let dayCheck = document.getElementsByClassName('day-number')
     if(action === "add"){
         for (let j = 0; j < dayCheck.length; j++) {
             if (dayCheck[j].textContent == day) {
-                console.log('add event');
+
         
                 // Create a new div element for the event
                 let newEventDiv = document.createElement("div");
@@ -135,7 +127,6 @@ function modifyCalendar(action, currentMonth, day, currentYear, time, name){
         
                 // Find the event content container for the current day
                 let eventContentContainer = document.getElementsByClassName('eventContent')[j];
-        
                 // Append the new div to the event content container
                 eventContentContainer.appendChild(newEventDiv);
             }
@@ -145,7 +136,6 @@ function modifyCalendar(action, currentMonth, day, currentYear, time, name){
     else if(action === "delete"){
         for (let k = 0; k < dayCheck.length; k++) {
             if (dayCheck[k].textContent == day) {
-                console.log('replaceDelete');
         
                 // Get the event content container for the current day
                 let eventContentContainer = document.getElementsByClassName('eventContent')[k];
