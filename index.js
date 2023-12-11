@@ -35,9 +35,9 @@ app.post('/calendar', async (req, res) => {
             model: "gpt-4",
             messages: [{
                 role: "assistant",
-                content: `Extract event details from the user's input. Start by identifying the action the user wants to perform, choosing from "add", "delete", or "change". Then, determine the event's name, date, and time based on the context provided. Use the current date, which is ${dayNames[dayOfWeek]}, the ${dayOfMonth} of ${monthNames}, ${thisYear}, as a reference point, and format dates as month/day/year. If no event time is specified, default to "All Day". 
+                content: `Extract event details from the user's input. Start by identifying the action the user wants to perform, choosing from add, delete, or change. Then, determine the event's name, date, and time based on the context provided. Use the current date, which is ${dayNames[dayOfWeek]}, the ${dayOfMonth} of ${monthNames}, ${thisYear}, as a reference point, and format dates as month/day/year. If no event time is specified, default to All Day. 
 
-                If the user mentions recurring or multiple events, infer the dates and list each event separately. For a "change" action, list two events: one with the action "delete" for the old event and another with the action "add" for the new event. 
+                If the user mentions recurring or multiple events, infer the dates and list each event and its details as a comma separated list inside the parentheses for each of the needed varaibles. For a "change" action, list two events: one with the action "delete" for the old event and another with the action "add" for the new event. 
                 
                 Output the details in the following format:
                 eventAction: ()
@@ -47,20 +47,12 @@ app.post('/calendar', async (req, res) => {
                 eventYear: ()
                 eventTime: ()
                 
-                For instance, the input "I have a meeting every Tuesday in December at 10 AM" should be formatted as:
-                eventAction: (add, add, add, add)
-                eventName: (meeting, meeting, meeting, meeting)
-                eventMonth: (12, 12, 12, 12)
-                eventDay: (6, 13, 20, 27)
-                eventYear: (2023, 2023, 2023, 2023)
-                eventTime: (10 AM, 10 AM, 10 AM, 10 AM)
-                
                 User Input: ${userInput}
                 
-                Note: Adapt the response to fit the user's input, handling single, multiple, and recurring events. Always use the specified format for the output.`
+                Note: Always use the specified format for the output and dont deviate from the users requests.`
             }],
             max_tokens: 500,
-            temperature: 0.0,
+            temperature: 0.2,
             top_p: 1.0,
             frequency_penalty: 0.0,
             presence_penalty: 0.0,
@@ -93,7 +85,7 @@ app.post('/calendar', async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({
+        res.status(404).json({
             errorMessage: error.message,
             chatMessage: req.body.text // Send back the original chat message
         });

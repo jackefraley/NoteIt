@@ -36,7 +36,6 @@ document.addEventListener('keypress', function(event) {
         var matchesTime = time.match(regExpTime);
         var matchesName = name.match(regExpTime);
         for(let i = 0; i < matchesDay.length; i++){
-
             modifyCalendar(matchesAction[i], matchesMonth[i], matchesDay[i], matchesYear[i], matchesTime[i], matchesName[i]);
         }
     })
@@ -111,23 +110,21 @@ function createCalendar(){
 }
 
 function modifyCalendar(action, eventMonth, day, eventYear, time, name){
-    month = eventMonth - 1
-    year = eventYear
-    createCalendar()
+    console.log((month+1).toString(), eventMonth,year.toString(), eventYear)
+    if(eventMonth != (month + 1).toString() || eventYear != year.toString()){
+        console.log('change month')
+        month = eventMonth - 1
+        year = eventYear
+        createCalendar()
+    }
     let dayCheck = document.getElementsByClassName('day-number')
     if(action === "add"){
         for (let j = 0; j < dayCheck.length; j++) {
             if (dayCheck[j].textContent == day) {
-
-        
-                // Create a new div element for the event
                 let newEventDiv = document.createElement("div");
-                newEventDiv.className = "event"; // Assign a class for styling if needed
-                newEventDiv.textContent = name + " - " + time; // Set the content
-        
-                // Find the event content container for the current day
+                newEventDiv.className = "event";
+                newEventDiv.textContent = name + " - " + time;
                 let eventContentContainer = document.getElementsByClassName('eventContent')[j];
-                // Append the new div to the event content container
                 eventContentContainer.appendChild(newEventDiv);
             }
         }
@@ -136,15 +133,9 @@ function modifyCalendar(action, eventMonth, day, eventYear, time, name){
     else if(action === "delete"){
         for (let k = 0; k < dayCheck.length; k++) {
             if (dayCheck[k].textContent == day) {
-        
-                // Get the event content container for the current day
                 let eventContentContainer = document.getElementsByClassName('eventContent')[k];
-        
-                // Iterate over each event in the container
                 Array.from(eventContentContainer.children).forEach(eventDiv => {
-                    // Check if this event's name matches the one to delete
                     if (eventDiv.textContent.toLowerCase().includes(name.toLowerCase())) {
-                        // Remove the event element
                         eventContentContainer.removeChild(eventDiv);
                     }
                 });
