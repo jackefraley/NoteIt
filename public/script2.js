@@ -1,15 +1,14 @@
-// Check if user data is already stored in local storage
-   var users = JSON.parse(localStorage.getItem('users')) || [];
+var users = JSON.parse(localStorage.getItem('users')) || [];
 
-   function login() {
-       var enteredUsername = document.getElementById('username').value;
-       var enteredPassword = document.getElementById('password').value;
+    function login() {
+        var enteredUsername = document.getElementById('username').value;
+        var enteredPassword = document.getElementById('password').value;
 
        // Check credentials
        var user = users.find(u => u.username === enteredUsername && u.password === enteredPassword);
 
        if (user) {
-           alert('Login successful!');
+            window.location.href = '/index.html';
        } else {
            alert('Invalid username or password');
        }
@@ -32,6 +31,6 @@
    }
 
    function showLoginForm() {
-       document.getElementById('loginForm').style.display = 'flex';
+       document.getElementById('loginForm').style.display = 'block';
        document.getElementById('registerForm').style.display = 'none';
    }

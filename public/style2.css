@@ -1,7 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: rgb(251,204,220);
-    background: radial-gradient(circle, rgba(251,204,220,1) 0%, rgba(181,200,255,1) 100%);
+    background-color: rgba(52,53,65,255);
     margin: 0;
     padding: 0;
     display: flex;
@@ -16,19 +15,21 @@ body {
 }
 
 .home-link {
-    color: black;
+    color: white;
     text-decoration: none;
     position: absolute;
     top: 0;
-    left: 0;
-    margin: 10px;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     padding: 5px;
-    border: 1px solid;
     border-radius: 5px;
+    font-size: 30px;
 }
 
 .home-link:hover {
-    background-color: rgba(101, 101, 101, 0.274);
+    background-color: green;
 }
 
 
@@ -55,7 +56,7 @@ input {
 }
 
 button {
-    background-color: rgb(64, 153, 237);
+    background-color: grey;
     color: #fff;
     padding: 10px 20px;
     margin: 0px 0px 10px;

@@ -5,7 +5,7 @@ document.addEventListener('keypress', function(event) {
     document.getElementById('calendarInput').value = ""
 
 
-    fetch('http://localhost:3000/calendar', {
+    fetch('/calendar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ function updateMonthName(month){
     let thisMonth = month%12
     console.log(thisMonth)
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    document.getElementById('monthName').textContent = monthNames[thisMonth]
+    document.getElementById('monthName').textContent = monthNames[thisMonth] + " " + year
 }
 
 
@@ -77,7 +77,6 @@ function calendarStep(event){
         }
         month--
         }
-    }
     createCalendar()
 }
 

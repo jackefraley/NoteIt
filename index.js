@@ -12,7 +12,6 @@ const openai = new OpenAI({
 
 const app = express();
 app.use(cors());
-app.use(express.static('public'));
 app.use(express.json());
 
 // get today's date
@@ -25,7 +24,37 @@ let monthNames = currentDate.toLocaleString('default', { month: 'long' });
 let thisYear = currentDate.getFullYear();
 console.log(dayNames[dayOfWeek]);
 
-// post request to server
+app.use(express.json());
+app.get('/', (req, res) => {
+    res.redirect('/login.html');
+});
+
+app.use(express.static('public'));
+let users = [];
+
+app.post('/register', (req, res) => {
+    const { username, password } = req.body;
+
+    const userExists = users.some(user => user.username === username);
+    if (userExists) {
+        return res.status(400).json({ message: 'User already exists' });
+    }
+
+    users.push({ username, password });
+    res.status(201).json({ message: 'User registered successfully' });
+});
+
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    const user = users.find(user => user.username === username && user.password === password);
+    if (user) {
+        res.json({ message: 'Login successful' });
+    } else {
+        res.status(401).json({ message: 'Invalid credentials' });
+    }
+});
+
 app.post('/calendar', async (req, res) => {
     try {
         const userInput = req.body.text;
@@ -35,9 +64,9 @@ app.post('/calendar', async (req, res) => {
             model: "gpt-4",
             messages: [{
                 role: "assistant",
-                content: `Extract event details from the user's input. Start by identifying the action the user wants to perform, choosing from add, delete, or change. Then, determine the event's name, date, and time based on the context provided. Use the current date, which is ${dayNames[dayOfWeek]}, the ${dayOfMonth} of ${monthNames}, ${thisYear}, as a reference point, and format dates as month/day/year. If no event time is specified, default to All Day. 
+                content: `Extract event details from the user's input. Start by identifying the action the user wants to perform, choosing from add, delete, or change. Then, determine the event's name, date, and time based on the context provided Always give numbers without a zero in front. Always plan events in the future unless the date is specified. Use the current date, which is ${dayNames[dayOfWeek]}, the ${dayOfMonth} of ${monthNames}, ${thisYear}, as a reference point, and format dates as month/day/year. If no event time is specified, default to All Day. 
 
-                If the user mentions recurring or multiple events, infer the dates and list each event and its details as a comma separated list inside the parentheses for each of the needed varaibles. For a "change" action, list two events: one with the action "delete" for the old event and another with the action "add" for the new event. 
+                If the user mentions recurring or multiple events, or the event falls on multiple days, list each events action, name, dates, and time as a comma separated list inside the parentheses for all the events the user wants to add. For a "change" action, list two events: one with the action "delete" for the old event and another with the action "add" for the new event. 
                 
                 Output the details in the following format:
                 eventAction: ()
@@ -92,7 +121,6 @@ app.post('/calendar', async (req, res) => {
     }
 });
 
-// information needed to run the server
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
