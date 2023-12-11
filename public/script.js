@@ -14,7 +14,6 @@ document.addEventListener('keypress', function(event) {
     })
     .then(response => {
         if (!response.ok) {
-            // If response is not OK, throw an error to be caught in the catch block
             return response.json().then(err => { throw err; });
         }
         return response.json();
@@ -40,7 +39,6 @@ document.addEventListener('keypress', function(event) {
         }
     })
     .catch(error => {
-        // Display the error message sent from the server as an alert
         let errorMessage = error.errorMessage || 'An unknown error occurred';
         let chatMessage = error.chatMessage || 'No chat message available';
         alert(`Error: ${errorMessage}\nChat Message: ${chatMessage}`);
