@@ -57,6 +57,7 @@ let year = date.getFullYear()
 
 function updateMonthName(month){
     let thisMonth = month%12
+    console.log(thisMonth)
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     document.getElementById('monthName').textContent = monthNames[thisMonth]
 }
@@ -70,10 +71,12 @@ function calendarStep(event){
         month++
     }
     else if(event.target.id === 'leftClick'){
-        if((month%12 + 1) == 1){
+        if((month%12 + 1) == 1 || month < 0){
+            month += 12
             year--
         }
         month--
+        }
     }
     createCalendar()
 }
