@@ -59,8 +59,9 @@ let month = date.getMonth()
 let year = date.getFullYear()
 
 function updateMonthName(month){
-    const monthNameVaraible = month.toLocaleString('default', { month: 'long' })
-    document.getElementById('monthName').textContent = monthNameVaraible
+    let thisMonth = month%12
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    document.getElementById('monthName').textContent = monthNames[thisMonth]
 }
 
 
@@ -83,7 +84,8 @@ function calendarStep(event){
 }
 
 function createCalendar(){
-
+    console.log(month)
+    updateMonthName(month)
     let firstDay = new Date(year, month, 1).getDay()
     let lastDate = new Date(year, month + 1, 0).getDate()
     let lastMonthLastDate = new Date(year, month, 0).getDate()
