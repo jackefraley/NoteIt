@@ -12,44 +12,56 @@ document.addEventListener('keypress', function(event) {
         },
         body: JSON.stringify({text: question}),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            // If response is not OK, throw an error to be caught in the catch block
+            return response.json().then(err => { throw err; });
+        }
+        return response.json();
+    })
     .then(data => {
-        var action = data.action
-        var time = data.time
-        var month = data.month
-        var day = data.day
-        var year = data.year
-        var name = data.name
-        var numOfEvents = data.numOfEvents
-        console.log(numOfEvents)
-        console.log('name', day)
+        var action = data.action;
+        var time = data.time;
+        var month = data.month;
+        var day = data.day;
+        var year = data.year;
+        var name = data.name;
+        console.log('name', action);
         let regExp = /\d+/g;
-        let regExpText = /[^,]+/g;
+        let regExpText = /(delete|add)/g;
+        let regExpTime = /[^,]+/g;
+        var matchesAction = action.match(regExpText);
         var matchesDay = day.match(regExp);
         var matchesMonth = month.match(regExp);
         var matchesYear = year.match(regExp);
-        var matchesTime = time.match(regExpText);
-        console.log(time)
-        console.log("length:", matchesDay.length)
-        for(i = 0; i < matchesDay.length; i++){
-            console.log(matchesTime.length)
-            modifyCalendar(action, matchesMonth[i], matchesDay[i], matchesYear[i], matchesTime[i], name)
+        var matchesTime = time.match(regExpTime);
+        var matchesName = name.match(regExpTime);
+        console.log("length:", matchesDay.length);
+        for(let i = 0; i < matchesDay.length; i++){
+            console.log(matchesAction.length);
+            console.log(matchesAction[i]);
+            modifyCalendar(matchesAction[i], matchesMonth[i], matchesDay[i], matchesYear[i], matchesTime[i], matchesName[i]);
         }
     })
-    .catch(error => console.error('Error:', error));
-}
-});
+    .catch(error => {
+        // Display the error message sent from the server as an alert
+        let errorMessage = error.errorMessage || 'An unknown error occurred';
+        let chatMessage = error.chatMessage || 'No chat message available';
+        alert(`Error: ${errorMessage}\nChat Message: ${chatMessage}`);
+    });
+}});
 
 
 document.getElementById('rightClick').addEventListener('click', calendarStep)
 document.getElementById('leftClick').addEventListener('click', calendarStep)
-
-
 let date = new Date()
 let month = date.getMonth()
+let year = date.getFullYear()
 
-const monthNameVaraible = date.toLocaleString('default', { month: 'long' })
-document.getElementById('monthName').textContent = monthNameVaraible
+function updateMonthName(month){
+    const monthNameVaraible = month.toLocaleString('default', { month: 'long' })
+    document.getElementById('monthName').textContent = monthNameVaraible
+}
 
 
 function calendarStep(event){
@@ -68,14 +80,7 @@ function calendarStep(event){
         month--
     }
     createCalendar()
-    let tempDate = new Date();
-    tempDate.setMonth(month);
-    const monthNameVaraible = tempDate.toLocaleString('default', { month: 'long' })
-    console.log(monthNameVaraible)
-    document.getElementById('monthName').textContent = monthNameVaraible
 }
-
-let year = date.getFullYear()
 
 function createCalendar(){
 
@@ -110,25 +115,47 @@ function createCalendar(){
 }
 }
 
-function modifyCalendar(action, month, day, year, time, name){
-    console.log(time)
+function modifyCalendar(action, currentMonth, day, currentYear, time, name){
+    month = currentMonth
+    year = currentYear
+    console.log(month)
+    createCalendar()
     let dayCheck = document.getElementsByClassName('day-number')
     if(action === "add"){
-        for(j = 0; j < dayCheck.length; j++){
-            if(dayCheck[j].textContent === day){
-                document.getElementsByClassName('eventContent')[j].innerHTML = name + " - " + time
-                return;
+        for (let j = 0; j < dayCheck.length; j++) {
+            if (dayCheck[j].textContent == day) {
+                console.log('add event');
+        
+                // Create a new div element for the event
+                let newEventDiv = document.createElement("div");
+                newEventDiv.className = "event"; // Assign a class for styling if needed
+                newEventDiv.textContent = name + " - " + time; // Set the content
+        
+                // Find the event content container for the current day
+                let eventContentContainer = document.getElementsByClassName('eventContent')[j];
+        
+                // Append the new div to the event content container
+                eventContentContainer.appendChild(newEventDiv);
             }
         }
     }
-    else if(action === "change"){
 
-    }
     else if(action === "delete"){
-        for(j = 0; j < dayCheck.length; j++){
-            if(dayCheck[j].textContent === day){
-                document.getElementsByClassName('eventContent')[i].innerHTML = ''
-                return
+        for (let k = 0; k < dayCheck.length; k++) {
+            if (dayCheck[k].textContent == day) {
+                console.log('replaceDelete');
+        
+                // Get the event content container for the current day
+                let eventContentContainer = document.getElementsByClassName('eventContent')[k];
+        
+                // Iterate over each event in the container
+                Array.from(eventContentContainer.children).forEach(eventDiv => {
+                    // Check if this event's name matches the one to delete
+                    if (eventDiv.textContent.toLowerCase().includes(name.toLowerCase())) {
+                        // Remove the event element
+                        eventContentContainer.removeChild(eventDiv);
+                    }
+                });
             }
         }
     }
