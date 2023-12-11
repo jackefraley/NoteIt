@@ -1,5 +1,4 @@
 window.onload = createCalendar
-OPEN_AI_KEY= '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'
 document.addEventListener('keypress', function(event) {
     if(event.key === "Enter" && document.getElementById('calendarInput').value != ''){
     const question = document.getElementById('calendarInput').value;
